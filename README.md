@@ -25,6 +25,7 @@ Ao entrar vai pedir para criar pasta .vscode
 Explicar que tudo começa por Startup.cs
 
 Acessar os endereço abaixo:
+
 http://localhost:5000/api/values  
 http://localhost:5000/api/values/1
 
