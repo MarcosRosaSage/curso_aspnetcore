@@ -1,6 +1,6 @@
 # ASPNETCORE 2.2 - API com Entity Framework Core
 
-**Criar uma Pasta com o comando abaixo: **
+**Criar as Pasta com o comando abaixo:**
 
 **mkdir** dojo
 
@@ -20,7 +20,7 @@
 
 **cd** ..
 
-## Abrir o VS-Code
+**Abrir o VS-Code**
 **Code .**
 
 Ao entrar no VS-Code a ide irá pedir para criar pasta .vscode
