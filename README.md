@@ -64,11 +64,8 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design --version 1.1.
 	
 
 ========================================================================
-Api.Domain
 
-Criar a pasta Entities 
-
-BaseEntity.cs
+Api.Domain -> Criar a pasta Entities -> BaseEntity.cs
 
 using System;
 using System.ComponentModel.DataAnnotations;
