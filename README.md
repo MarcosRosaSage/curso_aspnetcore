@@ -55,12 +55,12 @@ dotnet add Api.Service reference Api.Data
 Api.Data - Instalação Pacotes Entity Framework
 
 Para instalar precisar estar dentro da Pasta Api.Data
-dotnet add package Microsoft.EntityFrameworkCore.Tools --version 2.2.4
-dotnet add package Microsoft.EntityFrameworkCore.Design --version 2.2.4
-dotnet add package Pomelo.EntityFrameworkCore.MySql --version 2.2.0
+    dotnet add package Microsoft.EntityFrameworkCore.Tools --version 2.2.4
+    dotnet add package Microsoft.EntityFrameworkCore.Design --version 2.2.4
+    dotnet add package Pomelo.EntityFrameworkCore.MySql --version 2.2.0
 
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 2.2.4
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design --version 1.1.6
+    dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 2.2.4
+    dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design --version 1.1.6
 	
 
 ========================================================================
