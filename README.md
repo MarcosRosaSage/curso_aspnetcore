@@ -1,12 +1,14 @@
-Comando Para Dojo
+# ASPNETCORE 2.2 - API com Entity Framework Core
 
-mkdir dojo
+**Criar uma Pasta com o comando abaixo: **
 
-cd dojo
+**mkdir** dojo
 
-mkdir src
+**cd** dojo
 
-cd src
+**mkdir** src
+
+**cd** src
 
     dotnet new sln --name Api
 
@@ -16,39 +18,44 @@ cd src
 
     dotnet build 
 
-cd ..
+**cd** ..
 
-code .
+## Abrir o VS-Code
+**Code .**
 
-Ao entrar vai pedir para criar pasta .vscode
+Ao entrar no VS-Code a ide irá pedir para criar pasta .vscode
 
-Explicar que tudo começa por Startup.cs
+	Required assets to build and debug are missing from 'dojo'
+	Add them?
+			Don't Ask Again     Not Now     Yes
+
+**YES**
 
 Acessar os endereço abaixo:
 
 http://localhost:5000/api/values  
 http://localhost:5000/api/values/1
 
-cd SRC
+**cd** SRC
 
-//Criar a Camada de Dominio
+**Criar a Camada de Dominio**
 
     dotnet new classlib -n Domain -f netcoreapp2.2  -o Api.Domain
     dotnet sln add Api.Domain
     dotnet build
 
-//Criar a Camada de Data
+**Criar a Camada de Data**
 
     dotnet new classlib -n Data -f netcoreapp2.2  -o Api.Data
     dotnet sln add Api.Data
 
-//Criar a Camada de Service
+**Criar a Camada de Service**
 
     dotnet new classlib -n Service -f netcoreapp2.2  -o Api.Service
     dotnet sln add Api.Service 
 
 
-//Referências
+**Referências**
 
     dotnet add Api.Application reference Api.Domain
     dotnet add Api.Application reference Api.Service
@@ -58,10 +65,9 @@ cd SRC
     dotnet add Api.Service reference Api.Domain
     dotnet add Api.Service reference Api.Data
 	
-========================================================================
-Api.Data - Instalação Pacotes Entity Framework
+###### Api.Data - Instalação Pacotes Entity Framework
 
-Para instalar precisar estar dentro da Pasta Api.Data
+**Para instalar precisar estar dentro da Pasta Api.Data**
 
     dotnet add package Microsoft.EntityFrameworkCore.Tools --version 2.2.4
     dotnet add package Microsoft.EntityFrameworkCore.Design --version 2.2.4
@@ -71,9 +77,9 @@ Para instalar precisar estar dentro da Pasta Api.Data
     dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design --version 1.1.6
 	
 
-========================================================================
+###### Api.Domain -> Criar a pasta Entities -> 
 
-Api.Domain -> Criar a pasta Entities -> BaseEntity.cs
+**BaseEntity.cs**
 
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -94,7 +100,7 @@ Api.Domain -> Criar a pasta Entities -> BaseEntity.cs
         }
     }
 
-UserEntity
+**UserEntity.cs**
 
     namespace Api.Domain.Entities
     {
@@ -106,13 +112,16 @@ UserEntity
     }
 
 
-=========================================================================
-Api.Data
-Criar três pastas: Context, Mapping e Repository.
+###### Api.Data
+Criar três pastas: 
+
+*.Context
+*.Mapping 
+*.Repository
 
 
-Api.Data -> Mapping
-	UserMap.cs
+###### Api.Data -> Mapping
+** UserMap.cs **
 
 	using Api.Domain.Entities;
 	using Microsoft.EntityFrameworkCore;
@@ -143,8 +152,8 @@ Api.Data -> Mapping
 	}
 
 
-Api.Data -> Pasta Contexto
-	MyContext.cs
+###### Api.Data -> Pasta Contexto
+**MyContext.cs**
  
 	using Api.Data.Mapping;
 	using Api.Domain.Entities;
@@ -171,9 +180,9 @@ Api.Data -> Pasta Contexto
 	}
 
 
-Criar um Arquivo na Raiz do Projeto
+###### Criar um Arquivo na Raiz do Projeto
 
-docker-compose.yml
+**docker-compose.yml**
 
     version: '3.1'
     services:
@@ -196,14 +205,13 @@ docker-compose.yml
     container_name: mssql
 
    
-Para subir o Containers Docker
+** Para subir o Containers Docker **
 
     sudo docker-compose up -d
     sudo docker stats
 
-Na Pasta
-Api.Data 
-
+###### Api.Data 
+** Acessar a pasta para executar os comando do Entity Framework **
     dotnet ef --version
 
     dotnet ef --help
@@ -211,9 +219,9 @@ Api.Data
     dotnet ef migrations add Initials
 
 
-Vai gerar um problema pois não tem a conexao
+*Vai gerar um problema pois não tem a conexao*
 
-ContextFactory.cs
+**ContextFactory.cs**
 
 	using Microsoft.EntityFrameworkCore;
 	using Microsoft.EntityFrameworkCore.Design;
@@ -235,17 +243,20 @@ ContextFactory.cs
 		}
 	}   
 
-O Entity Framework Migrations
+**Entity Framework Migrations**
 
     dotnet ef migrations add Initials
 
     dotnet ef database update
 
 
-Api.Domain - Implementação da Interface de Repositório
+###### Api.Domain - Implementação da Interface de Repositório
 
-Pasta de Interfaces criar
-IRepository.cs
+**Criar uma pasta**
+*.Interfaces
+
+
+**IRepository.cs**
 
 	using System;
 	using System.Collections.Generic;
@@ -265,8 +276,8 @@ IRepository.cs
 	}
 
 
-Api.Data - Repositório
-Repository
+###### Api.Data - Repositório
+**Repository.cs**
 
 	using System;
 	using System.Collections.Generic;
@@ -379,17 +390,15 @@ Repository
 	}
 	
 	
-===================================================================	
+###### Api.Domain - Interface para Services
 
-Api.Domain - Interface para Services
-
-================================================================
-
-Dentro da Pasta Interfaces Criar uma Chamada Services
+Dentro da Pasta Interfaces 
+Criar uma nova pasta
+*.Services
 
 Criar uma Interface
 
-IUserService
+**IUserService.cs**
 
 	using System;
 	using System.Collections.Generic;
@@ -408,13 +417,9 @@ IUserService
 		}
 	}
 
-================================================================
+###### Api.Service - Regras de Negócio
 
-Api.Service - Regras de Negócio
-
-================================================================
-	
-	UserService.cs
+**UserService.cs**
 	
 	using System;
 	using System.Collections.Generic;
@@ -462,11 +467,7 @@ Api.Service - Regras de Negócio
 		}
 	}
 	
-================================================================
-
-Api.Application
-
-================================================================
+###### Api.Application
 
     using System;
     using System.Net;
@@ -507,7 +508,7 @@ Api.Application
 http://localhost:5000/api/users
 
 	
-Adicionar em Startup
+**Adicionar em Startup**
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -523,7 +524,7 @@ Adicionar em Startup
         }	
 		
 		
-Controller Inteira 
+**Controller Inteira**
 
     using System;
     using System.Net;
@@ -660,7 +661,11 @@ Controller Inteira
     }
 		
 
-options => options.UseSqlServer("Server=127.0.0.1,11433;Database=dojo;User Id=sa;Password=mudar@123")	
+**MySQL**
+*. options => options.UseMySql("Server=localhost;Port=3306;Database=dojo;Uid=root;Pwd=admin")
+
+**MS-SQL-Server**
+*. options => options.UseSqlServer("Server=127.0.0.1,11433;Database=dojo;User Id=sa;Password=mudar@123")	
 
 
 
