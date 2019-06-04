@@ -523,7 +523,7 @@ Adicionar em Startup
         }	
 		
 		
-Controller Inteira AKI
+Controller Inteira 
 
     using System;
     using System.Net;
