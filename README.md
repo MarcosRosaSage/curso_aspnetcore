@@ -204,9 +204,12 @@ Para subir o Containers Docker
 Na Pasta
 Api.Data 
 
-dotnet ef --version
-dotnet ef --help
-dotnet ef migrations add Initials
+    dotnet ef --version
+
+    dotnet ef --help
+
+    dotnet ef migrations add Initials
+
 
 Vai gerar um problema pois não tem a conexao
 
