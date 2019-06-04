@@ -172,31 +172,34 @@ Api.Data -> Pasta Contexto
 
 
 Criar um Arquivo na Raiz do Projeto
-docker-compose.yml
-version: '3.1'
-services:
- Mysql:
-   image: mysql:8.0.16
-   restart: always
-   environment:
-     MYSQL_ROOT_PASSWORD: admin
-   ports:
-     - 3306:3306
-   container_name: mysql8
 
- MsSql:
-   image:  microsoft/mssql-server-linux:2017-latest
-   environment:
-     MSSQL_SA_PASSWORD: mudar@123
-     ACCEPT_EULA: "Y"
-   ports:
-     - 11433:1433
-   container_name: mssql
+docker-compose.yml
+
+    version: '3.1'
+    services:
+    Mysql:
+    image: mysql:8.0.16
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: admin
+    ports:
+        - 3306:3306
+    container_name: mysql8
+
+    MsSql:
+    image:  microsoft/mssql-server-linux:2017-latest
+    environment:
+        MSSQL_SA_PASSWORD: mudar@123
+        ACCEPT_EULA: "Y"
+    ports:
+        - 11433:1433
+    container_name: mssql
 
    
 Para subir o Containers Docker
-sudo docker-compose up -d
-sudo docker stats
+
+    sudo docker-compose up -d
+    sudo docker stats
 
 Na Pasta
 Api.Data 
