@@ -235,10 +235,11 @@ ContextFactory.cs
 		}
 	}   
 
-dotnet ef migrations add Initials
-dotnet ef database update
+O Entity Framework Migrations
 
-O Entity Framework irá criar as Migrations
+    dotnet ef migrations add Initials
+
+    dotnet ef database update
 
 
 Api.Domain - Implementação da Interface de Repositório
