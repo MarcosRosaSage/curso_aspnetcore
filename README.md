@@ -381,8 +381,11 @@ Repository
 	
 ===================================================================	
 Api.Domain - Interface para Services
+
 Dentro da Pasta Interfaces Criar uma Chamada Services
+
 Criar uma Interface
+
 IUserService
 
 	using System;
@@ -457,42 +460,44 @@ Api.Service - Regras de Negócio
 Api.Application
 
 
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Api.Domain.Interfaces.Services;
-using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Net;
+    using System.Threading.Tasks;
+    using Api.Domain.Interfaces.Services;
+    using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Application.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    namespace Api.Application.Controllers
     {
-
-        [HttpGet]
-        public async Task<ActionResult> GetAll([FromServices] IUserService service)
+        [Route("api/[controller]")]
+        [ApiController]
+        public class UsersController : ControllerBase
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
 
-            try
+            [HttpGet]
+            public async Task<ActionResult> GetAll([FromServices] IUserService service)
             {
-                return Ok(await service.GetAll());
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                try
+                {
+                    return Ok(await service.GetAll());
+                }
+                catch (ArgumentException e)
+                {
+                    return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+                }
+
             }
 
         }
+    }	
 
-    }
-}	
 
 http://localhost:5000/api/users
+
 	
 //Adicionar em Startup
         public void ConfigureServices(IServiceCollection services)
