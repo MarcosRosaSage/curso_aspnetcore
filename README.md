@@ -1,8 +1,11 @@
 Comando Para Dojo
 
 mkdir dojo
+
 cd dojo
+
 mkdir src
+
 cd src
 
     dotnet new sln --name Api
