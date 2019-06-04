@@ -67,34 +67,34 @@ dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design --version 1.1.
 
 Api.Domain -> Criar a pasta Entities -> BaseEntity.cs
 
-using System;
-using System.ComponentModel.DataAnnotations;
+    using System;
+    using System.ComponentModel.DataAnnotations;
 
-namespace Api.Domain.Entities
-{
-    public abstract class BaseEntity
+    namespace Api.Domain.Entities
     {
-        [Key]
-        public Guid Id { get; set; }
-        private DateTime? _createAt;
-        public DateTime? CreateAt
+        public abstract class BaseEntity
         {
-            get { return _createAt; }
-            set { _createAt = (value == null ? DateTime.UtcNow : value); }
+            [Key]
+            public Guid Id { get; set; }
+            private DateTime? _createAt;
+            public DateTime? CreateAt
+            {
+                get { return _createAt; }
+                set { _createAt = (value == null ? DateTime.UtcNow : value); }
+            }
+            public DateTime? UpdateAt { get; set; }
         }
-        public DateTime? UpdateAt { get; set; }
     }
-}
 
 UserEntity
-namespace Api.Domain.Entities
-{
-    public class UserEntity : BaseEntity
+    namespace Api.Domain.Entities
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public class UserEntity : BaseEntity
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+        }
     }
-}
 
 
 =========================================================================
