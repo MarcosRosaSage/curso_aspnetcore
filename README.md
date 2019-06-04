@@ -95,6 +95,7 @@ Api.Domain -> Criar a pasta Entities -> BaseEntity.cs
     }
 
 UserEntity
+
     namespace Api.Domain.Entities
     {
         public class UserEntity : BaseEntity
