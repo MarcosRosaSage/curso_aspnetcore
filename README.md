@@ -5,13 +5,13 @@ cd dojo
 mkdir src
 cd src
 
-dotnet new sln --name Api
+    dotnet new sln --name Api
 
-dotnet new webapi -n Application -o Api.Application --no-https
+    dotnet new webapi -n Application -o Api.Application --no-https
 
-dotnet sln add Api.Application
+    dotnet sln add Api.Application
 
-dotnet build 
+    dotnet build 
 
 cd ..
 
@@ -28,28 +28,31 @@ http://localhost:5000/api/values/1
 cd SRC
 
 //Criar a Camada de Dominio
-dotnet new classlib -n Domain -f netcoreapp2.2  -o Api.Domain
-dotnet sln add Api.Domain
-dotnet build
+
+    dotnet new classlib -n Domain -f netcoreapp2.2  -o Api.Domain
+    dotnet sln add Api.Domain
+    dotnet build
 
 //Criar a Camada de Data
-dotnet new classlib -n Data -f netcoreapp2.2  -o Api.Data
-dotnet sln add Api.Data
+
+    dotnet new classlib -n Data -f netcoreapp2.2  -o Api.Data
+    dotnet sln add Api.Data
 
 //Criar a Camada de Service
-dotnet new classlib -n Service -f netcoreapp2.2  -o Api.Service
-dotnet sln add Api.Service 
+
+    dotnet new classlib -n Service -f netcoreapp2.2  -o Api.Service
+    dotnet sln add Api.Service 
 
 
 //Referências
 
-dotnet add Api.Application reference Api.Domain
-dotnet add Api.Application reference Api.Service
+    dotnet add Api.Application reference Api.Domain
+    dotnet add Api.Application reference Api.Service
 
-dotnet add Api.Data reference Api.Domain  
+    dotnet add Api.Data reference Api.Domain  
   
-dotnet add Api.Service reference Api.Domain
-dotnet add Api.Service reference Api.Data
+    dotnet add Api.Service reference Api.Domain
+    dotnet add Api.Service reference Api.Data
 	
 ========================================================================
 Api.Data - Instalação Pacotes Entity Framework
